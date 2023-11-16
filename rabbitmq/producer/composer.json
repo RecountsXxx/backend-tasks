@@ -1,0 +1,22 @@
+{
+    "name": "bogdan/producer",
+    "autoload": {
+        "psr-4": {
+            "Bogdan\\Producer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan Kapriyan",
+            "email": "bogdankapriyanua@gmail.com"
+        }
+    ],
+    "require": {
+        "php-amqplib/php-amqplib": "^3.0"
+    },
+    "config": {
+        "platform": {
+            "ext-sockets": false
+        }
+    }
+}
