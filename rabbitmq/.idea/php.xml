@@ -10,6 +10,25 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/producer/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/producer/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/producer/vendor/composer" />
+      <path value="$PROJECT_DIR$/producer/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/producer/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/consumer/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/consumer/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/consumer/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/consumer/vendor/composer" />
+      <path value="$PROJECT_DIR$/consumer/vendor/paragonie/random_compat" />
+    </include_path>
+  </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
