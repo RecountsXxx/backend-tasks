@@ -1,0 +1,33 @@
+version: '3'
+services:
+  send-request:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./php/send-request.php:/var/www/html/php/send-request.php
+
+  analyze-request:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./php/analyze-request.php:/var/www/html/php/analyze-request.php
+
+  index-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./php/index.php:/var/www/html/php/index.php
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - send-request
+      - analyze-request
+      - index-php
