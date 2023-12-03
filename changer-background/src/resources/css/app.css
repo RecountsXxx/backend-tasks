@@ -1,0 +1,92 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+body{
+    background: rgb(237,245,251);
+}
+.header{
+    height: 70px;
+    background: rgb(42,141,202);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: #1a202c;
+}
+.logo-header{
+    width: 270px;
+    height: 68px;
+}
+.auth {
+    gap: 40px;
+    display: flex;
+    align-items: center;
+}
+.auth-labels{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    transition: .3s ease;
+    color: white;
+}
+.auth-labels:hover{
+    color: black;
+}
+.main-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    height: 60vh;
+}
+.main-h1{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 60px;
+    width: 600px;
+    transition: .3s ease;
+    color: #002658;
+}
+.main-text-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    transition: .3s ease;
+    color: #002658;
+    font-size: 24px;
+}
+.form-upload{
+    background: white;
+    border-radius: 15px;
+    border: solid 1px darkgray;
+    padding: 35px;
+    margin-right: 35%;
+}
+.upload-image{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    border: none;
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+    background: rgb(42,141,202);
+    color: white;
+    font-size: 24px;
+    transition: .3s ease-in-out;
+}
+.text-bold{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+}
+.upload-image:hover{
+    background: dodgerblue;
+}
+.main-text-div{
+    margin-top: 15%;
+    margin-left: 32.5%;
+}
+.instuction{
+    background: #f3f3f3;
+    color:white;
+    position: absolute;
+    width: 471px;
+    top:52%;
+    border-radius: 0px 0px 15px 15px;
+    border: solid 1px darkgray;
+}
