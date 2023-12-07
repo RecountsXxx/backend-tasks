@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite(['resources/css/app.css'])
-</head>
-<body class="antialiased">
-<header class="header">
-    <img src="{{asset('assets/logo.png')}}" class="logo-header">
-    <div class="auth me-5">
-        <a href="{{route('login')}}"><label class="auth-labels fs-5">Login</label></a>
-        <a href="{{route('register')}}"><label class="auth-labels fs-5">Register</label></a>
-    </div>
-</header>
+@extends('layouts.app')
+
+@section('content')
 <main class="main-page">
     <div class="main-text-div">
-        <h1 class="main-h1">Удалить BG (удаление фона) с помощью AI — бесплатно и в HD</h1>
-        <label class="main-text-label">Автоматически - Быстро - Бесплатно и Просто</label>
+        <h1 class="main-h1">Change background using AI - free and in HD</h1>
+        <label class="main-text-label">Automatically - Fast - Free and Easy</label>
         <img src="https://remove-bg.ai/images/hero_remove_bg_static_banner.png" style="width: 800px; height: 400px;" alt="Remove BG Image">
     </div>
     <div class="form-upload">
@@ -65,5 +47,4 @@
     </div>
 
 </main>
-</body>
-</html>
+@endsection

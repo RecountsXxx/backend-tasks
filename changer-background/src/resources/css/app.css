@@ -39,7 +39,7 @@ body{
 .main-h1{
     font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
-    font-size: 60px;
+    font-size: 50px;
     width: 600px;
     transition: .3s ease;
     color: #002658;

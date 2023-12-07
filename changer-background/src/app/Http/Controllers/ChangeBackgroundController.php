@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 class ChangeBackgroundController extends Controller
 {
     public function submit(Request $request){
+        ob_start();
         if ($request->hasFile('image') && $request->hasFile('background')) {
             $main_image = $request->file('image');
             $background = $request->file('background');
@@ -20,7 +21,7 @@ class ChangeBackgroundController extends Controller
             $base64Encoded = base64_encode($imageData);
 
             $apiUrl = 'https://api.ximilar.com/removebg/precise/removebg';
-            $apiKey = 'f20a13cd41624bb165bed9da2e95269237a83701';
+            $apiKey = 'c781a43025117669959a3e2008da3216afdf8730';
 
             $requestData = [
                 'records' => [
@@ -68,13 +69,12 @@ class ChangeBackgroundController extends Controller
                 imagecopyresampled($resizedBackground, $background, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($background), imagesy($background));
                 imagecopy($resizedBackground, $overlay, 0, 0, 0, 0, imagesx($overlay), imagesy($overlay));
 
-                header('Content-Disposition: attachment; filename="output_image.jpg"');
-                header('Content-Type: image/jpeg');
-
-                imagejpeg($resizedBackground);
-
-                imagedestroy($resizedBackground);
-                imagedestroy($overlay);
+//                header('Content-Disposition: attachment; filename="output_image.jpg"');
+//                header('Content-Type: image/jpeg');
+//                imagejpeg($resizedBackground);
+//                imagedestroy($resizedBackground);
+//                imagedestroy($overlay);
+                dd($resizedBackground);
             }
 
             curl_close($ch);
