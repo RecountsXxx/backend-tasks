@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Str;
+
 class ChangeBackgroundController extends Controller
 {
     public function submit(Request $request){
-        ob_start();
         if ($request->hasFile('image') && $request->hasFile('background')) {
             $main_image = $request->file('image');
             $background = $request->file('background');
@@ -21,7 +23,7 @@ class ChangeBackgroundController extends Controller
             $base64Encoded = base64_encode($imageData);
 
             $apiUrl = 'https://api.ximilar.com/removebg/precise/removebg';
-            $apiKey = 'c781a43025117669959a3e2008da3216afdf8730';
+            $apiKey = '7f84f73a75bc969bb46ee26420254e9770445e85';
 
             $requestData = [
                 'records' => [
@@ -48,7 +50,8 @@ class ChangeBackgroundController extends Controller
 
             if ($response === false) {
                 echo 'cURL Error: ' . curl_error($ch);
-            } else {
+            }
+            else {
                 $responseArray = json_decode($response, true);
                 $outputUrlWhitebg = $responseArray['records'][0]['_output_url'];
                 $client = new Client();
@@ -69,18 +72,27 @@ class ChangeBackgroundController extends Controller
                 imagecopyresampled($resizedBackground, $background, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($background), imagesy($background));
                 imagecopy($resizedBackground, $overlay, 0, 0, 0, 0, imagesx($overlay), imagesy($overlay));
 
-//                header('Content-Disposition: attachment; filename="output_image.jpg"');
-//                header('Content-Type: image/jpeg');
-//                imagejpeg($resizedBackground);
-//                imagedestroy($resizedBackground);
-//                imagedestroy($overlay);
-                dd($resizedBackground);
+                imagejpeg($resizedBackground, storage_path('app/public/' . 'output-img.jpeg'));
+
+                if(Auth::check()){
+                    $imagePath = storage_path('app/public/output-img.jpeg');
+                    Storage::disk('public')->put(Auth::id() . '/' . uniqid() . '.jpg', file_get_contents($imagePath));
+                }
+
+
+                header('Content-Disposition: attachment; filename="output_image.jpg"');
+                header('Content-Type: image/jpeg');
+                imagejpeg($resizedBackground);
+                imagedestroy($resizedBackground);
+                imagedestroy($overlay);
             }
 
             curl_close($ch);
         }
+        else{
+            return 'Ошибка: Проверьте, что оба изображения выбраны.';
+        }
 
-        return 'Ошибка: Проверьте, что оба изображения выбраны.';
     }
 
 
