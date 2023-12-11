@@ -23,7 +23,7 @@ class ChangeBackgroundController extends Controller
             $base64Encoded = base64_encode($imageData);
 
             $apiUrl = 'https://api.ximilar.com/removebg/precise/removebg';
-            $apiKey = '7f84f73a75bc969bb46ee26420254e9770445e85';
+            $apiKey = '6dda1bc7bf1eec16d8a442fa3b89449315fb2d48';
 
             $requestData = [
                 'records' => [
