@@ -17,4 +17,3 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('book',\App\Http\Controllers\BookController::class);
