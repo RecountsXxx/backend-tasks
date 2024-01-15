@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -17,8 +19,12 @@ class BookController extends Controller
         $book->name = $request->name;
         $book->author = $request->author;
         $book->category_id = $request->category_id;
-        $book->save();
 
+        $photo = $request->file('image');
+        $photoName = time().'.'.$photo->getClientOriginalExtension();
+        $photo->move(public_path('photos'), $photoName);
+        $book->image= 'photos/' . $photoName;
+        $book->save();
         return $book;
     }
     public function update(Request $request)
