@@ -57,7 +57,36 @@
         </form>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const imagePaths = [];
+    fetch("http://localhost/api/book", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(function (item){
+                imagePaths.push(item.image);
+            })
+        })
+        .catch(error => {
 
+            console.error('Error:', error);
+        });
+
+    async function preloadImages() {
+        try {
+            await axios.all(imagePaths.map(path => axios.get(path, { responseType: 'blob' })));
+            console.log('Images preloaded successfully!');
+        } catch (error) {
+            console.error('Error preloading images:', error);
+        }
+    }
+    window.onload = preloadImages;
+</script>
 <script>
     $(document).ready(function (){
         let catId = 0;
