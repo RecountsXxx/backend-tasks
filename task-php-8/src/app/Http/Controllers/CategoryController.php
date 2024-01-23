@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        return Cache::remember('all_categories', now()->addMinutes(10), function () {
+            return Category::all();
+        });
     }
 
     /**
@@ -23,6 +27,9 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->save();
+
+        Cache::forget('all_categories');
+
         return $category;
     }
 
@@ -34,7 +41,7 @@ class CategoryController extends Controller
         $category = Category::find($request->id);
         $category->name = $request->name;
         $category->save();
-
+        Cache::forget('all_categories');
         return $category;
     }
 
@@ -45,7 +52,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($request->id);
         $category->delete();
-
+        Cache::forget('all_categories');
         return Category::all();
     }
 }
